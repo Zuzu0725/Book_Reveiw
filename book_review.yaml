@@ -1,0 +1,158 @@
+#swaggerバージョン宣言
+swagger: "2.0"
+
+#基本情報
+info:
+  #バージョン表記
+  version: 1.0.0
+  #タイトル
+  title: Book-Review-API
+  #説明
+  description: "これは書籍レビューに関するAPIです。"
+
+#リクエスト方式
+schemes:
+  - http
+  - https
+#ホスト
+host: localhost
+#基幹パス
+basePath: /book_reviews
+
+#エンドポイント
+paths:
+  /book_reviews:
+    get:
+      summary:
+        書籍レビュー一覧API
+      description: "DBにあるすべての書籍レビュー情報を表示します"
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          schema:
+            type: array
+            items:
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                  example: 1
+                book_name:
+                  type: "string"
+                  example: "書籍名"
+                author:
+                  type: "string"
+                  example: "著者名"
+                summary:
+                  type: "string"
+                  example: "感想"
+    post:
+      summary:
+        書籍レビュー登録API
+      description: "DBに書籍レビューを登録します"
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: "integer"
+                example: 1
+              book_name:
+                type: "string"
+                example: "書籍名"
+              author:
+                type: "string"
+                example: "著者名"
+              summary:
+                type: "string"
+                example: "感想"  
+
+  /book_reviews/{review}:
+    get:
+      summary:
+        書籍レビュー情報API
+      description: "指定されたreviewの情報を返します"
+      parameters:
+      - name: "review"
+        in: "path"
+        description: "取得したい書籍レビューのID" 
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: "integer"
+                example: 1
+              book_name:
+                type: "string"
+                example: "書籍名"
+              author:
+                type: "string"
+                example: "著者名"
+              summary:
+                type: "string"
+                example: "感想"    
+    put:
+      summary:
+        書籍レビュー情報の更新
+      description: "指定されたreviewの情報を更新します"
+      parameters:
+      - name: "review"
+        in: "path"
+        description: "取得したい書籍レビューのID" 
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: "integer"
+                example: 1
+              book_name:
+                type: "string"
+                example: "書籍名"
+              author:
+                type: "string"
+                example: "著者名"
+              summary:
+                type: "string"
+                example: "感想" 
+    delete:
+      summary:
+        書籍レビュー情報の削除
+      description: "指定されたreviewの情報を削除します"
+      parameters:
+      - name: "review"
+        in: "path"
+        description: "取得したい書籍レビューのID" 
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "成功時のレスポンス"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: "integer"
+                example: 1
+              book_name:
+                type: "string"
+                example: "書籍名"
+              author:
+                type: "string"
+                example: "著者名"
+              summary:
+                type: "string"
+                example: "感想"  
+
+
